@@ -2,16 +2,11 @@ from flask import Blueprint, request, render_template, flash, g, session, redire
 from werkzeug import check_password_hash, generate_password_hash
 
 from app import db
-from app.dashboard.forms import RegisterForm, LoginForm
-from app.dashboard.models import User
-from app.dashboard.decorators import requires_login
+from app.modules.login.forms import RegisterForm, LoginForm
+from app.modules.login.models import User
+from app.modules.login.decorators import requires_login
 
-mod = Blueprint('dashboard', __name__, url_prefix='')
-
-@mod.route('/')
-@requires_login
-def home():
-  return render_template("dashboard/home.html", user=g.user)
+mod = Blueprint('login', __name__, url_prefix='')
 
 @mod.before_request
 def before_request():

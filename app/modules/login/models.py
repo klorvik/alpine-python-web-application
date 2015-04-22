@@ -1,5 +1,5 @@
 from app import db
-from app.dashboard import constants as USER
+from app.modules.login import constants as USER
 
 class User(db.Model):
 

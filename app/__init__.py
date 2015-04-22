@@ -39,11 +39,11 @@ if not app.config['DEBUG']:
 def not_found(error):
     return render_template('404.html'), 404
 
-from app.dashboard.views import mod as dashboardModule
+from app.modules.dashboard.views import mod as dashboardModule
 app.register_blueprint(dashboardModule)
 
-# Later on you'll import the other blueprints the same way:
-#from app.comments.views import mod as commentsModule
-#from app.posts.views import mod as postsModule
-#app.register_blueprint(commentsModule)
-#app.register_blueprint(postsModule)
+from app.modules.login.views import mod as loginModule
+app.register_blueprint(loginModule)
+
+from app.modules.webshop.views import mod as webshopModule
+app.register_blueprint(webshopModule)
