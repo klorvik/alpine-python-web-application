@@ -18,5 +18,14 @@
 	$ env/bin/pip install flask-wtf
 
 ## Running
+	Activate environment:
 	$ . env/bin/activate
+	
+	Initialize DB:
+	$ python shell.py
+		>>> from app import db
+		>>> db.create_all()
+		>>> exit()
+	
+	Run:
 	$ python run.py
