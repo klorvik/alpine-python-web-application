@@ -45,3 +45,6 @@ app.register_blueprint(webshopModule)
 
 from app.modules.mypage.views import mod as mypageModule
 app.register_blueprint(mypageModule)
+
+from app.modules.contact.views import mod as contactModule
+app.register_blueprint(contactModule)

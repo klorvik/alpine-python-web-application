@@ -2,23 +2,34 @@
 <html>
   <head>
     <title>{% block title %}Alpinklubben Web Portal{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/ico" href="{{ url_for('static', filename='favicon.ico') }}"/>
     {% block css %}
-
-    {% endblock %}
-    {% block script %}
-    
+    <!-- Bootstrap -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/webshop-homepage.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/login.css') }}" rel="stylesheet">
+    <style>
+    body {
+        padding-top: 70px;
+        /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    }
+    </style>
     {% endblock %}
   </head>
   <body>
-    <div id="header">{% block header %}{% endblock %}</div>
-    <div id="messages-wrap">
-      <div id="messages">
-        {% for category, msg in get_flashed_messages(with_categories=true) %}
-          <p class="message flash-{{ category }}">{{ msg }}</p>
-        {% endfor %}
-      </div>
-    </div>
-    <div id="content">{% block content %}{% endblock %}</div>
-    <div id="footer">{% block footer %}{% endblock %}</div>
+  {% block navbar %} {% endblock %}
+  <div class="container">
+  <div id="content">
+    {% block basecontent %}{% endblock %}
+  </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
   </body>
 </html>
