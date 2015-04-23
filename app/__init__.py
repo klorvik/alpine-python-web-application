@@ -3,23 +3,18 @@ import sys
 
 from flask import Flask, render_template
 from flask.ext.sqlalchemy import SQLAlchemy
+from sqlalchemy_utils import database_exists
 
 app = Flask(__name__)
 app.config.from_object('config')
 
 db = SQLAlchemy(app)
 
-########################
-# Configure Secret Key #
-########################
-def install_secret_key(app, filename='secret_key'):
-    """Configure the SECRET_KEY from a file
-    in the instance directory.
+# Create DB if it doesn't exist
+if not database_exists(app.config['SQLALCHEMY_DATABASE_URI']):
+    db.create_all()
 
-    If the file does not exist, print instructions
-    to create it from a shell with a random key,
-    then exit.
-    """
+def install_secret_key(app, filename='secret_key'):
     filename = os.path.join(app.instance_path, filename)
 
     try:
@@ -47,3 +42,6 @@ app.register_blueprint(loginModule)
 
 from app.modules.webshop.views import mod as webshopModule
 app.register_blueprint(webshopModule)
+
+from app.modules.mypage.views import mod as mypageModule
+app.register_blueprint(mypageModule)

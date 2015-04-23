@@ -34,7 +34,7 @@ def login():
       flash('Welcome %s' % user.name)
       return redirect(url_for('dashboard.home'))
     flash('Wrong email or password', 'error-message')
-  return render_template("dashboard/login.html", form=form)
+  return render_template("login/login.html", form=form)
 
 @mod.route('/register/', methods=['GET', 'POST'])
 def register():
@@ -57,4 +57,4 @@ def register():
     flash('Thanks for registering')
     # redirect user to the 'home' method of the user module.
     return redirect(url_for('dashboard.home'))
-  return render_template("dashboard/register.html", form=form)
+  return render_template("login/register.html", form=form)
