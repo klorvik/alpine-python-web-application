@@ -1,18 +1,8 @@
-{% extends "navbar-base.html" %}
+{% extends "webshop/base.html" %}
 {% block title %}Webshop{% endblock %}
-{% block content %}
+{% block shopcontent %}
   <!-- Page Content -->
-          <div class="row">
-
-            <div class="col-md-3">
-                <p class="lead">Logget inn som {{ user.name }}</p>
-                <div class="list-group">
-                    <a href="#" class="list-group-item">Heiskort</a>
-                    <a href="#" class="list-group-item">Skipakker</a>
-                </div>
-            </div>
-
-            <div class="col-md-9">
+   <div class="col-md-9">
 
                 <div class="row carousel-holder">
 
@@ -52,7 +42,7 @@
                             <img src="http://placehold.it/320x150" alt="">
                             <div class="caption">
                                 <h4 class="pull-right">$24.99</h4>
-                                <h4><a href="#">First Product</a>
+                                <h4><a href="/webshop/equipment/1">First Product</a>
                                 </h4>
                                 <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
                             </div>
@@ -158,6 +148,5 @@
                     </div>
                 </div>
             </div>
-        </div>
 
 {% endblock %}
