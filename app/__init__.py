@@ -10,10 +10,6 @@ app.config.from_object('config')
 
 db = SQLAlchemy(app)
 
-# Create DB if it doesn't exist
-if not database_exists(app.config['SQLALCHEMY_DATABASE_URI']):
-    db.create_all()
-
 def install_secret_key(app, filename='secret_key'):
     filename = os.path.join(app.instance_path, filename)
 
@@ -34,6 +30,7 @@ if not app.config['DEBUG']:
 def not_found(error):
     return render_template('404.html'), 404
 
+# Import modules
 from app.modules.dashboard.views import mod as dashboardModule
 app.register_blueprint(dashboardModule)
 

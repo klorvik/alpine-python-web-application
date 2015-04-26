@@ -36,6 +36,11 @@ def login():
     flash('Wrong email or password', 'error-message')
   return render_template("login/login.html", form=form)
 
+@mod.route('/logout/', methods=['GET'])
+def logout():
+  del session['user_id']
+  return redirect(url_for('dashboard.home'))
+
 @mod.route('/register/', methods=['GET', 'POST'])
 def register():
   """

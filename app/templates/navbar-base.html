@@ -13,6 +13,9 @@
                 </button>
                 <a class="navbar-brand" href="{{ url_for('dashboard.home') }}">Hjem</a>
             </div>
+
+            
+
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
@@ -26,7 +29,19 @@
                         <a href="{{ url_for('contact.home') }}">Kontakt</a>
                     </li>
                 </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <div id="userstatus">Asd</div>
+                    </li>
+                </ul>
             </div>
+            <script type="text/javascript">
+                if( "{{ user.name }}" == "" ){
+                    document.getElementById("userstatus").innerHTML = '<a href="{{ url_for('login.login') }}">Ikke innlogget. Logg inn</a>'
+                }else{
+                    document.getElementById("userstatus").innerHTML = '<a href="{{ url_for('login.logout') }}">Logget inn som {{ user.name }}. Logg ut</a>'
+                }
+            </script>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
@@ -34,18 +49,6 @@
 
     <!-- Page Content -->
     <div class="container">
-      <div class="row">
-          <div class="col-lg-12 text-center">
-              <div id="header">{% block header %}{% endblock %}</div>
-              <div id="messages-wrap">
-                <div id="messages">
-                  {% for category, msg in get_flashed_messages(with_categories=true) %}
-                  <p class="message flash-{{ category }}">{{ msg }}</p>
-                  {% endfor %}
-                </div>
-              </div>
-          </div>
-      </div>
       {% block content %}{% endblock %}
       <hr>
 	    <!-- Footer -->

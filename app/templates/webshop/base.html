@@ -1,19 +1,11 @@
 {% extends "navbar-base.html" %}
 {% block title %}Webshop{% endblock %}
 {% block content %}
-    <script>
-      $('.list-group-item').on('click',function(e){
-        var previous = $(this).closest(".list-group").children(".active");
-        previous.removeClass('active'); // previous list-item
-        $(e.target).addClass('active'); // activated list-item
-      });
-    </script>
-
     <!-- Page Content -->
     <div class="row">
         <div class="col-md-3">
             <div class="list-group">
-                <a href="/webshop/tickets" class="list-group-item">Heiskort</a>
+                <a href="/webshop/tickets" class="list-group-item active">Heiskort</a>
                 <a href="/webshop/equipment" class="list-group-item">Skipakker</a>
             </div>
         </div>
