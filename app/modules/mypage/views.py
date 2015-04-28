@@ -1,7 +1,7 @@
 from flask import Blueprint, request, render_template, flash, g, session, redirect, url_for
 
 from app import db
-from app.modules.login.models import User
+from app.modules.core.models import User
 from app.modules.login.decorators import requires_login
 
 mod = Blueprint('mypage', __name__, url_prefix='/mypage')

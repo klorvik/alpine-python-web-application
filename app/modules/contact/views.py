@@ -1,5 +1,5 @@
 from flask import Blueprint, request, render_template, flash, g, session, redirect, url_for
-from app.modules.login.models import User
+from app.modules.core.models import User
 
 mod = Blueprint('contact', __name__, url_prefix='/contact')
 
@@ -15,5 +15,3 @@ def before_request():
 @mod.route('/')
 def home():
   return render_template("contact/home.html", user=g.user)
-
-

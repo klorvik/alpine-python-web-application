@@ -10,22 +10,6 @@ app.config.from_object('config')
 
 db = SQLAlchemy(app)
 
-def install_secret_key(app, filename='secret_key'):
-    filename = os.path.join(app.instance_path, filename)
-
-    try:
-        app.config['SECRET_KEY'] = open(filename, 'rb').read()
-    except IOError:
-        print('Error: No secret key. Create it with:')
-        full_path = os.path.dirname(filename)
-        if not os.path.isdir(full_path):
-            print('mkdir -p {filename}'.format(filename=full_path))
-        print('head -c 24 /dev/urandom > {filename}'.format(filename=filename))
-        sys.exit(1)
-
-if not app.config['DEBUG']:
-    install_secret_key(app)
-
 @app.errorhandler(404)
 def not_found(error):
     return render_template('404.html'), 404
@@ -45,3 +29,16 @@ app.register_blueprint(mypageModule)
 
 from app.modules.contact.views import mod as contactModule
 app.register_blueprint(contactModule)
+
+#Add dummydata
+from app.modules.core.models import User
+from app.modules.core.models import Ticket
+
+ticket1 = Ticket(name='Nybegynner', price=300, description='Asdasd', imageurl='http://placehold.it/800x300')
+ticket2 = Ticket(name='Medium', price=500, description='Asdasd', imageurl='http://placehold.it/800x300')
+ticket3 = Ticket(name='Ekspert', price=800, description='Asdasd', imageurl='http://placehold.it/800x300')
+# Insert the record in our database and commit it
+db.session.add(ticket1)
+db.session.add(ticket2)
+db.session.add(ticket3)
+db.session.commit()

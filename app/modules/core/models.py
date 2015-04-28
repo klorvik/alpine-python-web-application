@@ -1,5 +1,5 @@
 from app import db
-from app.modules.login import constants as USER
+from app.modules.core import constants as USER
 
 class User(db.Model):
 
@@ -23,4 +23,22 @@ class User(db.Model):
       return USER.ROLE[self.role]
 
     def __repr__(self):
-        return '<User %r>' % (self.name)
+      return '<User %r>' % (self.name)
+
+class Ticket(db.Model):
+
+    __tablename__ = 'ticket'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120), unique=True)
+    price = db.Column(db.SmallInteger)
+    description = db.Column(db.String(240))
+    imageurl = db.Column(db.String(120))
+
+    def __init__(self, name=None, price=None, description=None, imageurl=None):
+      self.name = name
+      self.price = price
+      self.description = description
+      self.imageurl = imageurl
+
+    def __repr__(self):
+      return '<Ticket %r>' % (self.name)

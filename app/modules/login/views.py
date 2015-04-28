@@ -3,8 +3,9 @@ from werkzeug import check_password_hash, generate_password_hash
 
 from app import db
 from app.modules.login.forms import RegisterForm, LoginForm
-from app.modules.login.models import User
 from app.modules.login.decorators import requires_login
+from app.modules.core.models import User
+
 
 mod = Blueprint('login', __name__, url_prefix='')
 
@@ -28,7 +29,7 @@ def login():
     user = User.query.filter_by(email=form.email.data).first()
     # we use werzeug to validate user's password
     if user and check_password_hash(user.password, form.password.data):
-      # the session can't be modified as it's signed, 
+      # the session can't be modified as it's signed,
       # it's a safe place to store the user id
       session['user_id'] = user.id
       flash('Welcome %s' % user.name)
