@@ -37,17 +37,17 @@ def add_dummydata():
     from app.modules.core.models import Equipment
     from werkzeug import generate_password_hash
 
-    user = User(name='testuser', email='testuser@test.com', password=generate_password_hash('testtest'))
+    user = User(username='testuser', name='Testbruker Test', email='testuser@test.com', password=generate_password_hash('testtest'))
 
-    ticket1 = Ticket(name='Dagskort', price=300, description='Asdasd', imageurl='http://placehold.it/800x300')
-    ticket2 = Ticket(name='Ukeskort', price=500, description='Asdasd', imageurl='http://placehold.it/800x300')
-    ticket3 = Ticket(name='Arskort', price=800, description='Asdasd', imageurl='http://placehold.it/800x300')
+    ticket1 = Ticket(name='Dagskort', price=300, description='En hel dag med morro!', imageurl='http://placehold.it/800x300')
+    ticket2 = Ticket(name='Ukeskort', price=500, description='Enda bedre, ei hel uke!', imageurl='http://placehold.it/800x300')
+    ticket3 = Ticket(name='Manedskort', price=800, description='En sikker vinner', imageurl='http://placehold.it/800x300')
 
-    equipment1 = Equipment(name='Nybegynner', price=300, description='Asdasd', imageurl='http://placehold.it/800x300')
-    equipment2 = Equipment(name='Medium', price=500, description='Asdasd', imageurl='http://placehold.it/800x300')
-    equipment3 = Equipment(name='Profesjonell', price=800, description='Asdasd', imageurl='http://placehold.it/800x300')
-    equipment4 = Equipment(name='Ekspert', price=800, description='Asdasd', imageurl='http://placehold.it/800x300')
-    equipment5 = Equipment(name='Toppen', price=1800, description='Asdasd', imageurl='http://placehold.it/800x300')
+    equipment1 = Equipment(name='Nybegynner', price=300, description='Perfekt pakke for en nybegynner.', imageurl='http://placehold.it/800x300')
+    equipment2 = Equipment(name='Medium', price=500, description='Denne pakken er litt vassere', imageurl='http://placehold.it/800x300')
+    equipment3 = Equipment(name='Profesjonell', price=800, description='Topp utstyr for en ivrig skikjorer', imageurl='http://placehold.it/800x300')
+    equipment4 = Equipment(name='Ekspert', price=800, description='Mye for pengene!', imageurl='http://placehold.it/800x300')
+    equipment5 = Equipment(name='Toppen', price=1800, description='Det beste av det beste. En pakke for Aksel Lund Svindal.', imageurl='http://placehold.it/800x300')
 
     # Insert the record in our database and commit it
     db.session.add(user)

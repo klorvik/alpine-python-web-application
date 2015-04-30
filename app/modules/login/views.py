@@ -17,19 +17,22 @@ def before_request():
 
 @mod.route('/login/', methods=['GET', 'POST'])
 def login():
-  form = LoginForm(request.form)
-  # make sure data are valid, but doesn't validate password is right
-  if form.validate_on_submit():
-    user = User.query.filter_by(email=form.email.data).first()
-    # we use werzeug to validate user's password
-    if user and check_password_hash(user.password, form.password.data):
-      # the session can't be modified as it's signed,
-      # it's a safe place to store the user id
-      session['user_id'] = user.id
-      flash('Welcome %s' % user.name)
-      return redirect(url_for('dashboard.home'))
-    flash('Wrong email or password', 'error-message')
-  return render_template("login/login.html", form=form)
+  if not 'user_id' in session:
+    form = LoginForm(request.form)
+    # make sure data are valid, but doesn't validate password is right
+    if form.validate_on_submit():
+      user = User.query.filter_by(email=form.email.data).first()
+      # we use werzeug to validate user's password
+      if user and check_password_hash(user.password, form.password.data):
+        # the session can't be modified as it's signed,
+        # it's a safe place to store the user id
+        session['user_id'] = user.id
+        flash('Welcome %s' % user.name)
+        return redirect(url_for('dashboard.home'))
+      flash('Wrong email or password', 'error-message')
+    return render_template("login/login.html", form=form)
+  else:
+    return redirect(url_for('dashboard.home'))
 
 @mod.route('/logout/', methods=['GET'])
 def logout():
@@ -41,7 +44,7 @@ def register():
   form = RegisterForm(request.form)
   if form.validate_on_submit():
     # create an user instance not yet stored in the database
-    user = User(name=form.name.data, email=form.email.data, \
+    user = User(username=form.username.data, name=form.name.data, email=form.email.data, \
       password=generate_password_hash(form.password.data))
     # Insert the record in our database and commit it
     db.session.add(user)

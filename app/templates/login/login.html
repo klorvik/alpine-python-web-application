@@ -4,6 +4,13 @@
 {% from "forms/macros.html" import render_field %}
 <form class="form-signin" method="POST" action=".">
     <h2 class="form-signin-heading">Vennligst logg inn</h2>
+    {% for category, msg in get_flashed_messages(with_categories=true) %}
+    <div class="alert alert-warning">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        {{ msg }}
+    </div>
+    {% endfor %}
+
     {{ form.csrf_token }}
     <label for="inputEmail" class="sr-only">Email address</label>
     {{ render_field(form.email, type="email", id="inputEmail", class="form-control", placeholder="Email address") }}
@@ -11,17 +18,11 @@
     {{ render_field(form.password, type="password", id="inputPassword", class="form-control", placeholder="Password") }}
     <div class="checkbox">
         <label>
-            <input type="checkbox" value="remember-me"> Remember me
+            <input type="checkbox" value="remember-me"> Forbli innlogget
         </label>
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit" value="Login">Logg inn</button>
+    <hr>
     <a href="{{ url_for('login.register') }}">Ikke medlem? Registrer deg!</a>
-    <div id="messages-wrap">
-        <div id="messages">
-            {% for category, msg in get_flashed_messages(with_categories=true) %}
-            <p class="message flash-{{ category }}">{{ msg }}</p>
-            {% endfor %}
-        </div>
-    </div>
 </form>
 {% endblock %}

@@ -1,10 +1,10 @@
-# Flask web application 
+# Flask web application
 
 ## Directory Structure
 
 	/app
 		/modules
-		/static	
+		/static
 		/templates
 	config.py
 	run.py
@@ -16,11 +16,16 @@
 	$ env/bin/pip install flask
 	$ env/bin/pip install flask-sqlalchemy
 	$ env/bin/pip install flask-wtf
-	$ env/bin/pip install sqlalchemy_utils
 
 ## Running
 	Activate environment:
 	$ . env/bin/activate
-	
+
+	Create and populate DB
+	$ python shell.py
+		>>> from app import db
+		>>> db.create_all()
+		>>> add_dummydata()
+
 	Run:
 	$ python run.py
