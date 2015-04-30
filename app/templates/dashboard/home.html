@@ -1,59 +1,119 @@
 {% extends "navbar-base.html" %}
 {% block content %}
-	
-	<!-- Heading Row -->
-        <div class="row">
-            <div class="col-md-8">
-                <img class="img-responsive img-rounded" src="{{ url_for('static', filename='images/dashboard.png') }}" alt="">
-            </div>
-            <!-- /.col-md-8 -->
-            <div class="col-md-4">
-                <h1>Alpinklubben</h1>
-                <p>Velkommen til alpinklubben! Vi har heis og løyper. Her kan du kjøpe heiskort og leie utstyr.</p>
-                <ul class="list-unstyled">
-                	<hr>
-	                <li><a class="btn btn-primary btn-lg" href="{{ url_for('login.register') }}">Bli medlem!</a></li>
-	                <hr>
-	                <li><a class="btn btn-primary btn-lg" href="{{ url_for('webshop.home') }}">Ta meg til butikken!</a></li>
-	            </ul>
-            </div>
-            <!-- /.col-md-4 -->
-        </div>
-        <!-- /.row -->
+<!-- Heading Row -->
+<div class="row">
+    <div class="col-md-8">
+        <img class="img-responsive img-rounded" src="{{ url_for('static', filename='images/dashboard.png') }}" alt="">
+    </div>
+    <!-- /.col-md-8 -->
+    <div class="col-md-4">
+        <h1>Alpinklubben</h1>
+        <p>Velkommen til alpinklubben! Vi har heis og løyper. Her kan du kjøpe heiskort og leie utstyr.</p>
+        <ul class="list-unstyled">
+            <hr>
+            <li><a class="btn btn-primary btn-lg" href="{{ url_for('login.register') }}">Bli medlem!</a></li>
+            <hr>
+            <li><a class="btn btn-primary btn-lg" href="{{ url_for('webshop.home') }}">Ta meg til butikken!</a></li>
+        </ul>
+    </div>
+    <!-- /.col-md-4 -->
+</div>
+<!-- /.row -->
 
-        <hr>
+<hr>
 
-        <!-- Call to Action Well -->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="well text-center">
-                    <h3>Kom deg ut og opplev naturen! En ny type spenning venter. Ta <a href="{{ url_for('contact.home') }}">kontakt</a> hvis du lurer på noe!</h3>
-                </div>
-            </div>
-            <!-- /.col-lg-12 -->
+<!-- Call to Action Well -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="well text-center">
+            <h3>Kom deg ut og opplev naturen! En ny type spenning venter. Ta <a href="{{ url_for('contact.home') }}">kontakt</a> hvis du lurer på noe!</h3>
         </div>
-        <!-- /.row -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
 
-        <!-- Content Row -->
-        <div class="row">
-            <div class="col-md-4">
-                <h2>Varierte bakker</h2>
-                <p>Vi har hele 13 nedfarter i forskjellige klasser fra nybegynner til ekspert.</p>
-                <a class="btn btn-default" href="#">Mer informasjon</a>
-            </div>
-            <!-- /.col-md-4 -->
-            <div class="col-md-4">
-                <h2>Utleie av utstyr</h2>
-                <p>Vi tilbyr rimelig leie av utstyr til våre medlemmer.</p>
-                <a class="btn btn-default" href="#">Mer informasjon</a>
-            </div>
-            <!-- /.col-md-4 -->
-            <div class="col-md-4">
-                <h2>Heiskort</h2>
-                <p>Vi har tre forskjellige typer heiskort som passer til alle.</p>
-                <a class="btn btn-default" href="#">Mer informasjon</a>
-            </div>
-            <!-- /.col-md-4 -->
-        </div>
-        <!-- /.row -->
+<!-- Content Row -->
+<div class="row">
+    <div class="col-md-4">
+        <h2>Varierte bakker</h2>
+        <p>Vi har hele 13 nedfarter i forskjellige klasser fra nybegynner til ekspert.</p>
+        <a class="btn btn-default" href="#">Mer informasjon</a>
+    </div>
+    <!-- /.col-md-4 -->
+    <div class="col-md-4">
+        <h2>Utleie av utstyr</h2>
+        <p>Vi tilbyr rimelig leie av utstyr til våre medlemmer.</p>
+        <a class="btn btn-default" href="#">Mer informasjon</a>
+    </div>
+    <!-- /.col-md-4 -->
+    <div class="col-md-4">
+        <h2>Heiskort</h2>
+        <p>Vi har tre forskjellige typer heiskort som passer til alle.</p>
+        <a class="btn btn-default" href="#">Mer informasjon</a>
+    </div>
+    <!-- /.col-md-4 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-md-4">
+        <h2>Åpne nedfarter</h2>
+        <table id="open-hills">
+            <thead>
+                <tr>
+                    <td></td>
+                    <th>Stengt</th>
+                    <th>Åpne</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Amount</th>
+                    <td>3</td>
+                    <td>15</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- /.col-md-4 -->
+    <div class="col-md-4">
+        <h2>Antall medlemmer</h2>
+        <table id="members">
+            <thead>
+                <tr>
+                    <td></td>
+                    <th>2011</th>
+                    <th>2012</th>
+                    <th>2013</th>
+                    <th>2014</th>
+                    <th>2015</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Antall medlemmer</th>
+                    <td>200</td>
+                    <td>200</td>
+                    <td>200</td>
+                    <td>250</td>
+                    <td>350</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- /.col-md-4 -->
+    <script>
+        $('#open-hills').chartify('pie', {
+            chartWidth: 296,
+            pieChartRotation: -1.156 / 2,
+            showLegend: true,
+            colors: ["cccccc", "ffc000"]
+        });
+        $('#members').chartify('bar', {
+            chartWidth: 396,
+            colors: ["cccccc"],
+            showLegend: false
+        });
+    </script>
+</div>
 {% endblock %}

@@ -1,0 +1,16 @@
+{% extends "webshop/base.html" %}
+{% block title %}Webshop{% endblock %}
+{% block shopcontent %}
+	<div class="col-md-9">
+	    <div class="thumbnail">
+	        <img class="img-responsive" src="{{ ticket.imageurl }}" alt="">
+	        <div class="caption-full">
+	            <h4 class="pull-right">{{ ticket.price }} NOK</h4>
+	            <h4><a href="#">{{ ticket.name }}</a></h4>
+				<a class="btn btn-success pull-right">Kjøp nå</a>
+	            <p>{{ ticket.description }}</p>
+
+	        </div>
+	    </div>
+	</div>
+{% endblock %}

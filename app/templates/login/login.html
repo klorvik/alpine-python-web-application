@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block title %}Login{% endblock %}
 {% block basecontent %}
-	{% from "forms/macros.html" import render_field %}
-	<form class="form-signin" method="POST" action=".">
+{% from "forms/macros.html" import render_field %}
+<form class="form-signin" method="POST" action=".">
     <h2 class="form-signin-heading">Vennligst logg inn</h2>
     {{ form.csrf_token }}
     <label for="inputEmail" class="sr-only">Email address</label>
@@ -10,18 +10,18 @@
     <label for="inputPassword" class="sr-only">Password</label>
     {{ render_field(form.password, type="password", id="inputPassword", class="form-control", placeholder="Password") }}
     <div class="checkbox">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
+        <label>
+            <input type="checkbox" value="remember-me"> Remember me
+        </label>
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit" value="Login">Logg inn</button>
     <a href="{{ url_for('login.register') }}">Ikke medlem? Registrer deg!</a>
     <div id="messages-wrap">
-      <div id="messages">
-        {% for category, msg in get_flashed_messages(with_categories=true) %}
-        <p class="message flash-{{ category }}">{{ msg }}</p>
-        {% endfor %}
-      </div>
+        <div id="messages">
+            {% for category, msg in get_flashed_messages(with_categories=true) %}
+            <p class="message flash-{{ category }}">{{ msg }}</p>
+            {% endfor %}
+        </div>
     </div>
-  </form>
+</form>
 {% endblock %}

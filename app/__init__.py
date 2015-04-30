@@ -30,15 +30,33 @@ app.register_blueprint(mypageModule)
 from app.modules.contact.views import mod as contactModule
 app.register_blueprint(contactModule)
 
-#Add dummydata
-from app.modules.core.models import User
-from app.modules.core.models import Ticket
+def add_dummydata():
+    #Add dummydata
+    from app.modules.core.models import User
+    from app.modules.core.models import Ticket
+    from app.modules.core.models import Equipment
+    from werkzeug import generate_password_hash
 
-ticket1 = Ticket(name='Nybegynner', price=300, description='Asdasd', imageurl='http://placehold.it/800x300')
-ticket2 = Ticket(name='Medium', price=500, description='Asdasd', imageurl='http://placehold.it/800x300')
-ticket3 = Ticket(name='Ekspert', price=800, description='Asdasd', imageurl='http://placehold.it/800x300')
-# Insert the record in our database and commit it
-db.session.add(ticket1)
-db.session.add(ticket2)
-db.session.add(ticket3)
-db.session.commit()
+    user = User(name='testuser', email='testuser@test.com', password=generate_password_hash('testtest'))
+
+    ticket1 = Ticket(name='Dagskort', price=300, description='Asdasd', imageurl='http://placehold.it/800x300')
+    ticket2 = Ticket(name='Ukeskort', price=500, description='Asdasd', imageurl='http://placehold.it/800x300')
+    ticket3 = Ticket(name='Arskort', price=800, description='Asdasd', imageurl='http://placehold.it/800x300')
+
+    equipment1 = Equipment(name='Nybegynner', price=300, description='Asdasd', imageurl='http://placehold.it/800x300')
+    equipment2 = Equipment(name='Medium', price=500, description='Asdasd', imageurl='http://placehold.it/800x300')
+    equipment3 = Equipment(name='Profesjonell', price=800, description='Asdasd', imageurl='http://placehold.it/800x300')
+    equipment4 = Equipment(name='Ekspert', price=800, description='Asdasd', imageurl='http://placehold.it/800x300')
+    equipment5 = Equipment(name='Toppen', price=1800, description='Asdasd', imageurl='http://placehold.it/800x300')
+
+    # Insert the record in our database and commit it
+    db.session.add(user)
+    db.session.add(ticket1)
+    db.session.add(ticket2)
+    db.session.add(ticket3)
+    db.session.add(equipment1)
+    db.session.add(equipment2)
+    db.session.add(equipment3)
+    db.session.add(equipment4)
+    db.session.add(equipment5)
+    db.session.commit()

@@ -11,18 +11,12 @@ mod = Blueprint('login', __name__, url_prefix='')
 
 @mod.before_request
 def before_request():
-  """
-  pull user's profile from the database before every request are treated
-  """
   g.user = None
   if 'user_id' in session:
     g.user = User.query.get(session['user_id'])
 
 @mod.route('/login/', methods=['GET', 'POST'])
 def login():
-  """
-  Login form
-  """
   form = LoginForm(request.form)
   # make sure data are valid, but doesn't validate password is right
   if form.validate_on_submit():
@@ -44,9 +38,6 @@ def logout():
 
 @mod.route('/register/', methods=['GET', 'POST'])
 def register():
-  """
-  Registration Form
-  """
   form = RegisterForm(request.form)
   if form.validate_on_submit():
     # create an user instance not yet stored in the database

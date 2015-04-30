@@ -27,7 +27,7 @@ class User(db.Model):
 
 class Ticket(db.Model):
 
-    __tablename__ = 'ticket'
+    __tablename__ = 'tickets_ticket'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=True)
     price = db.Column(db.SmallInteger)
@@ -42,3 +42,21 @@ class Ticket(db.Model):
 
     def __repr__(self):
       return '<Ticket %r>' % (self.name)
+
+class Equipment(db.Model):
+
+    __tablename__ = 'equipments_equipment'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120), unique=True)
+    price = db.Column(db.SmallInteger)
+    description = db.Column(db.String(240))
+    imageurl = db.Column(db.String(120))
+
+    def __init__(self, name=None, price=None, description=None, imageurl=None):
+      self.name = name
+      self.price = price
+      self.description = description
+      self.imageurl = imageurl
+
+    def __repr__(self):
+      return '<Equipment %r>' % (self.name)

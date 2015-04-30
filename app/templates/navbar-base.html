@@ -1,64 +1,62 @@
 {% extends "base.html" %}
 {% block navbar %}
-  <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{{ url_for('dashboard.home') }}">Hjem</a>
-            </div>
-
-            
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="{{ url_for('webshop.home') }}">Butikk</a>
-                    </li>
-                    <li>
-                        <a href="{{ url_for('mypage.home') }}">Minside</a>
-                    </li>
-                    <li>
-                        <a href="{{ url_for('contact.home') }}">Kontakt</a>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <div id="userstatus">Asd</div>
-                    </li>
-                </ul>
-            </div>
-            <script type="text/javascript">
-                if( "{{ user.name }}" == "" ){
-                    document.getElementById("userstatus").innerHTML = '<a href="{{ url_for('login.login') }}">Ikke innlogget. Logg inn</a>'
-                }else{
-                    document.getElementById("userstatus").innerHTML = '<a href="{{ url_for('login.logout') }}">Logget inn som {{ user.name }}. Logg ut</a>'
-                }
-            </script>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-    <!-- Page Content -->
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
-      {% block content %}{% endblock %}
-      <hr>
-	    <!-- Footer -->
-	    <footer>
-	        <div class="row">
-	            <div class="col-lg-12">
-	                <p>Copyright &copy; Knut Lorvik 2014</p>
-	            </div>
-	        </div>
-	    </footer>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ url_for('dashboard.home') }}">Hjem</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="{{ url_for('webshop.home') }}">Butikk</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('mypage.home') }}">Minside</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('contact.home') }}">Kontakt</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <div id="userstatus"></div>
+                </li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            if ("{{ user.name }}" == "") {
+                document.getElementById("userstatus").innerHTML = '<a href="{{ url_for('login.login') }}">Ikke innlogget. Logg inn</a>'
+            } else {
+                document.getElementById("userstatus").innerHTML = '<a href="{{ url_for('login.logout') }}">Logget inn som {{ user.name }}. Logg ut</a>'
+            }
+        </script>
+        <!-- /.navbar-collapse -->
     </div>
     <!-- /.container -->
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    {% block content %}{% endblock %}
+    <hr>
+    <!-- Footer -->
+    <footer>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Copyright &copy; Knut Lorvik 2014</p>
+            </div>
+        </div>
+    </footer>
+</div>
+<!-- /.container -->
 {% endblock %}

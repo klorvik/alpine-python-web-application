@@ -1,18 +1,15 @@
 body {
     padding-top: 70px;
 }
-
 footer {
     margin: 50px 0;
 }
-
 #userstatus {
-	display: block;
-	padding-top: 15px;
-	padding-right: 15px;
-	float: right;
+    display: block;
+    padding-top: 15px;
+    padding-right: 15px;
+    float: right;
 }
-
-#userstatus a{
-	color: #9d9d9d;
+#userstatus a {
+    color: #9d9d9d;
 }
